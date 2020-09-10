@@ -2,11 +2,17 @@ from Invoice import Invoice
 
 
 class Enterprise:
+    number: str
+    name: str
     credit_rating: str
     break_contract: bool
-    invoice_list: [Invoice] = []
+    invoice_list: ["Invoice"] = []
 
-    def __init__(self, credit_rating: str, break_contract: bool):
+    def __init__(
+        self, number: str, name: str, credit_rating: str, break_contract: bool
+    ):
+        self.number = number
+        self.name = name
         self.credit_rating = credit_rating
         self.break_contract = break_contract
 
