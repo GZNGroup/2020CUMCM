@@ -1,5 +1,4 @@
 from datetime import date
-from Enterprise import Enterprise
 
 
 class Invoice:
@@ -11,6 +10,7 @@ class Invoice:
     tax: float
     sum_money: float
     state_avaliable: bool
+    buy_in: bool
 
     def __init__(
         self,
@@ -22,6 +22,7 @@ class Invoice:
         tax: float,
         sum_money: float,
         state_avaliable: bool,
+        buy_in: bool,
     ):
         self.number = number
         self.date = date
@@ -31,3 +32,4 @@ class Invoice:
         self.tax = tax
         self.sum_money = sum_money
         self.state_avaliable = state_avaliable
+        self.buy_in = buy_in

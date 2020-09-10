@@ -6,7 +6,7 @@ class Enterprise:
     name: str
     credit_rating: str
     break_contract: bool
-    invoice_list: ["Invoice"] = []
+    invoice_list: ["Invoice"]
 
     def __init__(
         self, number: str, name: str, credit_rating: str, break_contract: bool
@@ -15,6 +15,7 @@ class Enterprise:
         self.name = name
         self.credit_rating = credit_rating
         self.break_contract = break_contract
+        self.invoice_list = []
 
     def add_invoice(self, new_invoice: "Invoice"):
         self.invoice_list.append(new_invoice)
