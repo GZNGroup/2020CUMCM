@@ -39,6 +39,9 @@ a=px.histogram(data, x="x", y="y", color="name", marginal="rug",
              )
 a.write_html('5.html')
 
+px.line(gapminder, x="year", y="lifeExp", color="continent", 
+        line_group="country", hover_name="country",
+        line_shape="spline", render_mode="svg")
 
 
 #长条图
