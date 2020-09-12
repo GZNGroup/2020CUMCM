@@ -386,7 +386,7 @@ from sklearn.svm import SVR
 from sklearn.model_selection import cross_val_predict, cross_val_score
 from datetime import timedelta
 linear_svr = SVR(kernel='linear')#
-enterprise_number = 'E26'
+enterprise_number = 'E9'
 temp = frame1[frame1.企业代号 == enterprise_number].reset_index(drop=True)
 N=len(temp['日期'])
 days = temp['日期'][N-1]
@@ -420,7 +420,7 @@ delta = y_pre[0]-last_money
 for i in range(len(y_pre)):
     y_pre[i] = y_pre[i]-delta
 for i in range(1,len(y_pre)):
-    y_pre[i] = y_pre[i-1] + k + np.random.randint(-1000000,1000000)
+    y_pre[i] = y_pre[i-1] + k + np.random.randint(-5000000,5000000)
 
 fig, ax = plt.subplots()
 ax.plot(x_data,y_data)
@@ -555,5 +555,39 @@ plotly.io.orca.config.save()
 
 
 # %%
+#coding:utf-8
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+import pandas as pd
+import math
+'''
+'''
+matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+matplotlib.rcParams['font.serif'] = ['SimHei']
+matplotlib.rcParams['axes.unicode_minus'] = False
 
+#正态分布的概率密度函数。可以理解成 x 是 mu（均值）和 sigma（标准差）的函数
+def normfun(x,mu,sigma):
+    pdf = np.exp(-((x - mu)**2)/(2*sigma**2)) / (sigma * np.sqrt(2*np.pi))
+    return pdf
+ 
+mu = 40
+sigma =4
+# Python实现正态分布
+# 绘制正态分布概率密度函数
+x = np.linspace(mu - 3*sigma, mu + 3*sigma, 50)
+y_sig = np.exp(-(x - mu) ** 2 /(2* sigma **2))/(math.sqrt(2*math.pi)*sigma)
+plt.plot(x, y_sig, "r-", linewidth=2)
+plt.vlines(mu, 0, np.exp(-(mu - mu) ** 2 /(2* sigma **2))/(math.sqrt(2*math.pi)*sigma), colors = "c", linestyles = "dashed")
+plt.vlines(mu-sigma, 0, np.exp(-(mu-sigma - mu) ** 2 /(2* sigma **2))/(math.sqrt(2*math.pi)*sigma), colors = "k", linestyles = "dotted")
+plt.xticks ([mu-sigma,mu],['A','E(x)'])
+plt.xlabel('资金')
+plt.ylabel('概率密度')
+plt.title('Normal Distribution: $\mu = %.2f, $sigma=%.2f'%(mu,sigma))
+#plt.grid(True)
+plt.show()
 
+# %%
+from matplotlib.font_manager import _rebuild
+_rebuild()
